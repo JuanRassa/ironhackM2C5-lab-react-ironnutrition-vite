@@ -1,4 +1,4 @@
-const FoodBox = ({ food }) => {
+const FoodBox = ({ food, deleteFood }) => {
   return (
     <div>
       <p>{food.name}</p>
@@ -12,7 +12,12 @@ const FoodBox = ({ food }) => {
         <b>Total Calories: {food.servings * food.calories} </b> kcal
       </p>
 
-      <button>Delete</button>
+      <button
+        onClick={() => {
+          deleteFood(food.id);
+        }}>
+        Delete
+      </button>
     </div>
   );
 };
