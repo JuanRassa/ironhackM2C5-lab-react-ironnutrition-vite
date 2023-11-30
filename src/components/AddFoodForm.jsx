@@ -33,6 +33,10 @@ const AddFoodForm = ({ addFood }) => {
     const id = Math.random();
     const newFood = { id, name, image, calories, servings };
     addFood(newFood);
+    setName('');
+    setImage('');
+    setCalories(0);
+    setServings(0);
   };
 
   return (
