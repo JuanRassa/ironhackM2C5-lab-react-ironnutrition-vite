@@ -33,11 +33,19 @@ function App() {
       <SearchBar filteredQuery={filteredQuery}></SearchBar>
       <Divider>Food List</Divider>
       <div className='row' style={{ width: '100%', justifyContent: 'center' }}>
-        {/* <Row style={{ width: '100%', justifyContent: 'center' }}> */}
-        {showFoodList.map(food => {
+        {showFoodList.length === 0 ? (
+          <div className='emptySearch'>
+            <h3 style={{ fontSize: '4rem' }}>:(</h3>
+            <h3>Oops! There is no more content to show.</h3>
+          </div>
+        ) : (
+          showFoodList.map(food => {
+            return <FoodBox key={food.id} food={food} deleteFood={deleteFood} />;
+          })
+        )}
+        {/* {showFoodList.map(food => {
           return <FoodBox key={food.id} food={food} deleteFood={deleteFood} />;
-        })}
-        {/* </Row> */}
+        })} */}
       </div>
     </div>
   );
