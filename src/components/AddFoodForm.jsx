@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Divider, Input } from 'antd';
 
 const AddFoodForm = ({ addFood }) => {
   const [name, setName] = useState('');
@@ -6,7 +7,7 @@ const AddFoodForm = ({ addFood }) => {
   const [calories, setCalories] = useState(0);
   const [servings, setServings] = useState(0);
 
-  console.log('<()> INFO: ', [name, image, calories, servings]);
+  // console.log('<()> INFO: ', [name, image, calories, servings]);
   const handleUserInput = e => {
     switch (e.target.name) {
       case 'name':
@@ -37,27 +38,28 @@ const AddFoodForm = ({ addFood }) => {
   return (
     <div>
       <form onSubmit={handleOnSubmit}>
+        <Divider>Add Food Entry</Divider>
         <div className='inputWrapper'>
           <label htmlFor='name'>Name:</label>
-          <input type='text' name='name' id='name' value={name} onChange={handleUserInput} />
+          <Input type='text' name='name' id='name' value={name} onChange={handleUserInput} />
         </div>
 
         <div className='inputWrapper'>
           <label htmlFor=''>Image URL:</label>
-          <input type='text' name='image' id='image' value={image} onChange={handleUserInput} />
+          <Input type='text' name='image' id='image' value={image} onChange={handleUserInput} />
         </div>
 
         <div className='inputWrapper'>
           <label htmlFor='calories'>Calories:</label>
-          <input type='number' name='calories' id='calories' value={calories} onChange={handleUserInput} />
+          <Input type='number' name='calories' id='calories' value={calories} onChange={handleUserInput} />
         </div>
 
         <div className='inputWrapper'>
           <label htmlFor='servings'>Servings:</label>
-          <input type='number' name='servings' id='servings' value={servings} onChange={handleUserInput} />
+          <Input type='number' name='servings' id='servings' value={servings} onChange={handleUserInput} />
         </div>
 
-        <button type='submit'>Add Food</button>
+        <button type='submit'>Create</button>
       </form>
     </div>
   );

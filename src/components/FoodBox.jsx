@@ -1,6 +1,6 @@
 const FoodBox = ({ food, deleteFood }) => {
   return (
-    <div>
+    <div className='food-box'>
       <p>{food.name}</p>
 
       <img src={food.image} />

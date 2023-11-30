@@ -3,19 +3,17 @@ import foodsJson from './foods.json';
 import FoodBox from './components/FoodBox';
 import AddFoodForm from './components/AddFoodForm';
 import './App.css';
+import { Row, Divider } from 'antd';
 
 function App() {
-  const [foodsData, setFoodsData] = useState(foodsJson);
+  const [foodsData] = useState(foodsJson);
   const [showFoodList, setShowFoodList] = useState(foodsData);
-  console.log(foodsData);
 
   const deleteFood = foodId => {
-    const filteredFoods = foodsData.filter(food => food.id !== foodId);
-    setShowFoodList(filteredFoods);
+    setShowFoodList(prevState => prevState.filter(food => food.id !== foodId));
   };
 
   const addFood = newFood => {
-    setFoodsData(prevState => [newFood, ...prevState]);
     setShowFoodList(prevState => [newFood, ...prevState]);
   };
 
@@ -23,9 +21,14 @@ function App() {
     <div className='App'>
       <h1>LAB | React IronNutrition</h1>
       <AddFoodForm addFood={addFood} />
-      {showFoodList.map(food => {
-        return <FoodBox key={food.id} food={food} deleteFood={deleteFood} />;
-      })}
+      <Divider>Food List</Divider>
+      <div className='row' style={{ width: '100%', justifyContent: 'center' }}>
+        {/* <Row style={{ width: '100%', justifyContent: 'center' }}> */}
+        {showFoodList.map(food => {
+          return <FoodBox key={food.id} food={food} deleteFood={deleteFood} />;
+        })}
+        {/* </Row> */}
+      </div>
     </div>
   );
 }
