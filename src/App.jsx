@@ -3,7 +3,7 @@ import foodsJson from './foods.json';
 import FoodBox from './components/FoodBox';
 import AddFoodForm from './components/AddFoodForm';
 import './App.css';
-import { Row, Divider } from 'antd';
+import { Divider } from 'antd';
 
 function App() {
   const [foodsData] = useState(foodsJson);
